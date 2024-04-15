@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Arrays</title>
+<style>
+pre {
+     background-color: #f0f0f0;
+padding: 10px;
+overflow-x: auto;
+}
+</style>
+ </head>
+  <body>
+ <div class="content"> 
+    <h1> MYSQL </h1> 
+    <section id="1">
+         <h2>1. ADD A COLUMN IN THE TABLE.</h2>
+<pre><code>
+    mysql> alter table student add dob date;
+    Query OK, 0 rows affected (1.07 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+mysql> desc student;
+    +---------+-------------+------+-----+---------+-------+
+    | Field   | Type        | Null | Key | Default | Extra |
+    +---------+-------------+------+-----+---------+-------+
+    | rollno  | int         | YES  |     | NULL    |       |
+    | name    | varchar(20) | YES  |     | NULL    |       |
+    | class   | varchar(20) | YES  |     | NULL    |       |
+    | section | char(1)     | YES  |     | NULL    |       |
+    | age     | int         | YES  |     | NULL    |       |
+    | dob     | date        | YES  |     | NULL    |       |
+    +---------+-------------+------+-----+---------+-------+
+    6 rows in set (0.00 sec)
+</code></pre>
+    </section> 
+    <section id="1">
+        <h2>2.MODIFY THE DATATYPE OF THE COLUMN.</h2>
+    <pre><code>
+        mysql> alter table student modify rollno varchar(20);
+        Query OK, 0 rows affected (2.61 sec)
+        Records: 0  Duplicates: 0  Warning
+    
+mysql> desc student;
+        +---------+-------------+------+-----+---------+-------+
+        | Field   | Type        | Null | Key | Default | Extra |
+        +---------+-------------+------+-----+---------+-------+
+        | rollno  | varchar(20) | YES  |     | NULL    |       |
+        | name    | varchar(20) | YES  |     | NULL    |       |
+        | class   | varchar(20) | YES  |     | NULL    |       |
+        | section | char(1)     | YES  |     | NULL    |       |
+        | age     | int         | YES  |     | NULL    |       |
+        | dob     | date        | YES  |     | NULL    |       |
+        +---------+-------------+------+-----+---------+-------+
+        6 rows in set (0.00 sec)
+            
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>3.DROP A COLUMN IN THE TABLE.</h2>
+    <pre><code>
+        mysql> alter table student drop age;
+        Query OK, 0 rows affected (1.04 sec)
+        Records: 0  Duplicates: 0  Warnings: 0
+mysql> desc student;
+        +---------+-------------+------+-----+---------+-------+
+        | Field   | Type        | Null | Key | Default | Extra |
+        +---------+-------------+------+-----+---------+-------+
+        | rollno  | varchar(20) | YES  |     | NULL    |       |
+        | name    | varchar(20) | YES  |     | NULL    |       |
+        | class   | varchar(20) | YES  |     | NULL    |       |
+        | section | char(1)     | YES  |     | NULL    |       |
+        | dob     | date        | YES  |     | NULL    |       |
+        +---------+-------------+------+-----+---------+-------+
+        5 rows in set (0.00 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>4.COMMIT STATEMENT IS USED TO MAKE CHANGES TO DATA PERMANENTLY TO THE DATABASE.</h2>
+    <pre><code>
+        mysql> insert into student values(4309,'kuldeep','BCA 4th','a');
+    Query OK, 1 row affected (0.00 sec)
+    
+    mysql> COMMIT;
+    Query OK, 0 rows affected (0.03 sec)
+    
+    mysql> select * from student;
+    +--------+----------+---------+---------+
+    | rollno | name     | class   | section |
+    +--------+----------+---------+---------+
+    |   4255 | Chitra   | BCA 4th | a       |
+    |   4263 | Jiya     | BCA 4th | a       |
+    |   4264 | Harshit  | BCA 4th | b       |
+    |   4269 | Rahul    | BCA 4th | b       |
+    |   4303 | Gauav    | BCA 4th | b       |
+    |   4309 | kuldeep  | BCA 4th | a       |
+    +--------+----------+---------+---------+
+    6 rows in set (0.00 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>5. CREATE A TABLE STUDENT HAVING FIELDS I.E. ROLLNO, NAME, CLASS, SECTION, AGE.</h2>
+    <pre><code>
+        mysql> create table student (rollno int, name varchar(20), class varchar(20), section char(1), age int);
+        Query OK, 0 rows affected (1.99 sec)
+mysql> desc student;
+        +---------+-------------+------+-----+---------+-------+
+        | Field   | Type        | Null | Key | Default | Extra |
+        +---------+-------------+------+-----+---------+-------+
+        | rollno  | int         | YES  |     | NULL    |       |
+        | name    | varchar(20) | YES  |     | NULL    |       |
+        | class   | varchar(20) | YES  |     | NULL    |       |
+        | section | char(1)     | YES  |     | NULL    |       |
+        | age     | int         | YES  |     | NULL    |       |
+        +---------+-------------+------+-----+---------+-------+
+        5 rows in set (0.07 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>6. DELETE A RECORD INTO A STUDENT.</h2>
+    <pre><code>
+        mysql> delete from student where rollno=4208;
+        Query OK, 1 row affected (0.07 sec)
+mysql> select * from student;
+        +--------+----------+---------+---------+
+        | rollno | name     | class   | section |
+        +--------+----------+---------+---------+
+        |   4254 | Pushap   | BCA 4th | a       |
+        |   4263 | Jahid    | BCA 4th | a       |
+        |   4264 | Harry    | BCA 4th | b       |
+        |   4269 | Rahul    | BCA 4th | b       |
+        |   4303 | Gaurav   | BCA 4th | b       |
+        +--------+----------+---------+---------+
+        5 rows in set (0.00 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>7. DROP THE TABLE.</h2>
+    <pre><code>
+        mysql> drop table student2;
+        Query OK, 0 rows affected (1.06 sec)
+        mysql> desc student2;
+        ERROR 1146 (42S02): Table 'student.student2' doesn't exist
+    
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>8. GIVE THE PREVILIGES TO USER.</h2>
+    <pre><code>
+        mysql> grant select on student to Jiya;
+        Query OK, 0 rows affected (0.29 sec)
+mysql> select * from student;
+        +--------+----------+---------+---------+
+        | rollno | name     | class   | section |
+        +--------+----------+---------+---------+
+        |   4255 | Chitra   | BCA 4th | a       |
+        |   4263 | Jiya     | BCA 4th | a       |
+        |   4264 | Harshit  | BCA 4th | b       |
+        |   4269 | Rahul    | BCA 4th | b       |
+        |   4303 | Gaurav   | BCA 4th | b       |
+        +--------+----------+---------+---------+
+        5 rows in set (0.00 sec)
+mysql> insert into student values(4309,'kuldeep','BCA 4th','a');
+        ERROR 1142 (42000): INSERT command denied to user 'jiya'@'localhost' for table 'student'
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>9. INSERT A ROW INTO A TABLE.</h2>
+    <pre><code>
+        mysql> insert into student values(4240,'GEEETA','BCA 4th','a');
+        Query OK, 1 row affected (0.04 sec)
+        
+        mysql> insert into student values(4260,'SIMRAN','BCA 4th','a');
+        Query OK, 1 row affected (0.04 sec)
+      
+        
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>10. INSERT INTO A STUDENT TO A SPECIFIC COLUMNS.</h2>
+    <pre><code>
+        
+        mysql> insert into student (rollno,name,section) values(4264,'Harshit','b');
+        Query OK, 1 row affected (0.03 sec)
+        
+        mysql> insert into student (rollno,name,section) values(4208,'Nitin','b');
+        Query OK, 1 row affected (0.04 sec)
+        
+        mysql> insert into student (rollno,name,section) values(4269,'Rahul','b');
+        Query OK, 1 row affected (0.03 sec)
+        
+        mysql> insert into student (rollno,name,section) values(4303,'Gaurav','b');
+        Query OK, 1 row affected (0.04 sec)
+mysql> select * from student;
+        +--------+----------+---------+---------+
+        | rollno | name     | class   | section |
+        +--------+----------+---------+---------+
+        |   4247 | Amandeep | BCA 4th | a       |
+        |   4263 | Jahid    | BCA 4th | a       |
+        |   4264 | Harshit  | NULL    | b       |
+        |   4208 | Nitin    | NULL    | b       |
+        |   4269 | Rahul    | NULL    | b       |
+        |   4303 | Gaurav   | NULL    | b       |
+        +--------+----------+---------+---------+
+        6 rows in set (0.03 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>11. RENAME A TABLE.</h2>
+    <pre><code>
+        mysql> rename table student to student2;
+        Query OK, 0 rows affected (0.45 sec)
+mysql> desc student2;
+        +---------+-------------+------+-----+---------+-------+
+        | Field   | Type        | Null | Key | Default | Extra |
+        +---------+-------------+------+-----+---------+-------+
+        | rollno  | varchar(20) | YES  |     | NULL    |       |
+        | name    | varchar(20) | YES  |     | NULL    |       |
+        | class   | varchar(20) | YES  |     | NULL    |       |
+        | section | char(1)     | YES  |     | NULL    |       |
+        | dob     | date        | YES  |     | NULL    |       |
+        +---------+-------------+------+-----+---------+-------+
+        5 rows in set (0.00 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>12. REMOVES USER PREVILIGES TO THE DATABASE OBJECTS.
+
+        </h2>
+    <pre><code>
+        mysql> revoke select on student from MEENA;
+        Query OK, 0 rows affected (0.07 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>13. ROLLBACK IS USED TO UNDO THE CHANGES.
+
+        </h2>
+    <pre><code>
+        mysql> insert into student values(4301,'Sakhi','BCA 4th','a');
+        Query OK, 1 row affected (0.00 sec)
+        
+        mysql> rollback;
+        Query OK, 0 rows affected (0.02 sec)
+        
+        mysql> select * from student;
+        +--------+----------+---------+---------+
+        | rollno | name     | class   | section |
+        +--------+----------+---------+---------+
+        |   4247 | Aman     | BCA 4th | a       |
+        |   4263 | Simran   | BCA 4th | a       |
+        |   4264 | Harh     | BCA 4th | b       |
+        |   4269 | Raha     | BCA 4th | b       |
+        |   4303 | Gurpreet | BCA 4th | b       |
+        |   4309 | kuldeep  | BCA 4th | a       |
+        +--------+----------+---------+---------+
+        6 rows in set (0.00 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>14.DELETE ALL RECORDS IN THE TABLE.
+        </h2>
+    <pre><code>
+      
+        mysql> truncate table student2;
+        Query OK, 0 rows affected (1.69 sec)
+mysql> select * from student2;
+        Empty set (0.02 sec)
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>UPDATE A SPECIFIC RECORD INTO A TABLE.
+        </h2>
+    <pre><code>
+        mysql> update student set class='BCA 4th' where rollno=4264;
+        Query OK, 1 row affected (0.09 sec)
+        Rows matched: 1  Changed: 1  Warnings: 0
+        </code></pre>
+    </section> 
+    <section id="1">
+        <h2>16. UPDATE ALL RECORDS INTO A TABLE.
+        </h2>
+    <pre><code>
+        mysql> update student set class='BCA 4th';
+        Query OK, 3 rows affected (0.07 sec)
+        Rows matched: 6  Changed: 3  Warnings: 0
+mysql> select * from student;
+        +--------+----------+---------+---------+
+        | rollno | name     | class   | section |
+        +--------+----------+---------+---------+
+        |   4247 | Aman     | BCA 4th | a       |
+        |   4263 | Simran   | BCA 4th | a       |
+        |   4264 | Harshit  | BCA 4th | b       |
+        |   4208 | Nitin    | BCA 4th | b       |
+        |   4269 | Reeya    | BCA 4th | b       |
+        |   4303 | Gaurav   | BCA 4th | b       |
+        +--------+----------+---------+---------+
+        6 rows in set (0.00 sec)
+        </code></pre>
+    </section>
+  
